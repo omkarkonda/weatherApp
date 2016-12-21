@@ -12,10 +12,5 @@ angular.module('routes', ['ui.router'])
       url:'/forecast',
       templateUrl:"templates/forecast.template.html",
       controller: 'forecastCtrl'
-    })
-    .state({
-      name: 'hello',
-      url:'/hello',
-      component: 'hello'
-    })
+    })    
 }])
