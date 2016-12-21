@@ -1,0 +1,39 @@
+
+
+<div class="row">
+
+  <div class="col-md-6 col-md-offset-3">
+    <h1 class="text-center text-nowrap">{{city}} for  next {{days}} days</h1>
+    <form>
+      <div class="form-group">
+        <input type="range" value="1" min="1" max="10" ng-change="onChange()" ng-model="days"/>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="panel panel-default" ng-repeat="day in data">
+  <div class="panel-heading">
+    {{convertDate(day.dt * 1000) | date: 'MMM dd EEEE' }}
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover ">
+      <tr>
+        <th>Weather</th>
+        <th>Temprature</th>
+        <th>Humidity</th>
+        <th>Cloudiness</th>
+      </tr>
+      <tr>
+        <td>{{day.weather[0].description}}</td>
+        <td>
+            <strong>Day</strong>/ {{ convertToCelsius(day.temp.day)}}<br />
+            <strong>Night</strong>/ {{ convertToCelsius(day.temp.night)}}
+          </td>
+        <td>{{day.humidity}} %</td>
+        <td>{{day.clouds}} %</td>
+      </tr>
+    </table>
+  </div>
+</div>
