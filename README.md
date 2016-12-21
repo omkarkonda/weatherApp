@@ -1,8 +1,8 @@
-**Simple Weather App**
-My first angular app
+#Simple Weather App
+#### My first angular app
 
-Consumed
+Consumed packages
 
-*Open weather api*
-*bootstrap*
-*angular 1.5.9*
+- open weather api
+- bootstrap
+- angular 1.5.9
