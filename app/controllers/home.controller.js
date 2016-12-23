@@ -1,17 +1,11 @@
 angular.module('forecast')
-.controller('homeCtrl', ['$scope', '$location', 'cityService', homeCtrl]);
+.controller('homeCtrl', ['$scope', '$state', '$location', 'cityService', 'weatherService', homeCtrl]);
 
-function homeCtrl($scope, $location, cityService){
-    $scope.city = cityService.city;
-    $scope.days = cityService.days;
-
-    $scope.$watch('city', function(){
-      cityService.city = $scope.city;
-      cityService.days = $scope.days
-    })
-
-    $scope.submit = function(){
-      if($scope.city)
-      $location.path("/forecast");
+function homeCtrl($scope, $state, $location, cityService, weatherService){
+    $scope.getForecast = function($state){
+      weatherService.getWeather($scope.city, $scope.days).then(function(res){
+        $scope.data = res.data.list;
+      });
+      $state.go('/results')
     }
 }
