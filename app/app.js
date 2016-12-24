@@ -4,39 +4,47 @@ angular.module('forecast', ['ui.router'])
 .config(['$stateProvider','$urlRouterProvider',
   function($stateProvider, $urlRouterProvider){
     $stateProvider
-      .state('forecast',{
+      .state('page',{
         url:'/',
-        templateUrl: 'templates/home.template.html',
-        controller: ['$scope', '$state', '$stateParams','weatherService',
-          function($scope,$state,$stateParams,weatherService){
-            $scope.city = "";
-            $scope.days = 2;          
-            $scope.getForecast = function(){
-              if($scope.city.length>3){
-                //$stateParams.city = $scope.city;
-                //$state.city.replace('/\s/g','');
-                $scope.cityList.concat($scope.city);
-                $scope.addCitytolist($scope.city);
-                weatherService.getWeather($scope.city, $scope.days).then(function(res){
-                  $scope.data = res.data.list;
-                });
-                $state.go('forecast.city',{cityName:$scope.city})
-             }
-           }
-           $scope.addCitytolist = function(city){
-             $scope.filteredCityList = $scope.cityList.filter(function(city, arr){
-                if(city !== $scope.city){
-                  return true;
-                }
-                return false;
-             })
-             console.log($scope.filteredCityList)
-           }
+        views:{
+          'header':{
+            templateUrl: 'common/header.html'
+          },
+          'citylist':{
+            templateUrl:'templates/sidebar.tmpl.html',
+            controller: ['$scope', function($scope){
+              // $scope.$watch('filteredCityList', function(){
+              //   console.log('citylist', $scope.filteredCityList);
+              // })
+            }]
+          },
+          'forecast':{
+            templateUrl: 'templates/home.template.html',
+            controller: ['$scope', '$rootScope', '$state', '$stateParams','weatherService',
+              function($scope,$rootScope,$state,$stateParams,weatherService){
+                $scope.city = ''; //$stateParams.cityName;
+                $scope.days = 2;
+                $scope.cityList = [];
 
-        }]
+                $scope.getForecast = function(){
+                  if($scope.city.length>3){
+                    $scope.addCitytolist($scope.city);
+                    $state.go('page.city',{cityName:$scope.city})
+                 }
+                 $scope.city = '';
+               }
+               $scope.addCitytolist = function(city){
+                 $scope.cityList = $scope.cityList.concat(city);
+                 $rootScope.filteredCityList = $scope.cityList.filter(function(city, pos, self){
+                    return self.indexOf(city) == pos;
+                 })
+               }
+            }]
+          }
+        }
       })
-      .state('forecast.city', {
-        url:':cityName',
+      .state('page.city', {
+        url:'city/:cityName',
         views:{
           'weather':{
             templateUrl: 'templates/forecast.template.html',

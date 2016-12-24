@@ -1,0 +1,8 @@
+    <div class="col-md-3">
+      <h3>History</h3>
+      <ul>
+        <li ng-repeat="city in filteredCityList">
+          <a ui-sref="page.city({cityName:city})">{{city}}</a>
+        </li>
+      </ul>
+    </div>
