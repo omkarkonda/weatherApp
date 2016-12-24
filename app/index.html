@@ -20,12 +20,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser.
       Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div ui-view="header"></div>
-  <div class="container">
+  <nav class="navbar navbar-default" ui-view="header"></nav>
+  <div class="container-fluid">
     <div class="row">
-      <div ui-view="citylist"></div>
-      <div ui-view="forecast"></div>
-    </div>      
+      <div ui-view="citylist" class="col-md-3"></div>
+      <div ui-view="forecast" class="col-md-9"></div>
+    </div>
   </div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -35,6 +35,7 @@
   <script src="app.js"></script>
   <script src="services/city.services.js" charset="utf-8"></script>
   <script src="controllers/forecast.controller.js" charset="utf-8"></script>
+  <script src="controllers/map.controller.js" charset="utf-8"></script>
 
   <!-- <script src="controllers/home.controller.js"></script>-->
   </body>

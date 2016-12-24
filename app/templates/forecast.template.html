@@ -1,6 +1,5 @@
-
   <div>
-    <h1 class="text-center text-nowrap">{{params.cityName}} for  next {{days}} days</h1>
+    <h1 class="text-left text-nowrap">{{params.cityName}} for  next {{days}} days</h1>
     <form>
       <div class="form-group">
         <input type="range" value="1" min="1" max="10" ng-change="onChange()" ng-model="days"/>
@@ -8,8 +7,9 @@
     </form>
   </div>
 
-
   <div>
+    <div ui-view="mapview"></div>
+    <button class="btn btn-default" ng-click="showMap()">Show Map</button>
     <div class="panel panel-default" ng-repeat="day in data">
       <div class="panel-heading">
         {{convertDate(day.dt * 1000) | date: 'MMM dd EEEE' }}

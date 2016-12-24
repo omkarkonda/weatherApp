@@ -13,9 +13,7 @@ angular.module('forecast', ['ui.router'])
           'citylist':{
             templateUrl:'templates/sidebar.tmpl.html',
             controller: ['$scope', function($scope){
-              // $scope.$watch('filteredCityList', function(){
-              //   console.log('citylist', $scope.filteredCityList);
-              // })
+
             }]
           },
           'forecast':{
@@ -49,6 +47,15 @@ angular.module('forecast', ['ui.router'])
           'weather':{
             templateUrl: 'templates/forecast.template.html',
             controller: 'forecastCtrl'
+          }
+        }
+      })
+      .state('page.city.map', {
+        url: "/map",
+        views:{
+          'mapview':{
+            templateUrl: 'templates/map.tmpl.html',
+            controller: 'mapCtrl'
           }
         }
       })

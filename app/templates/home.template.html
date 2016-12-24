@@ -1,12 +1,10 @@
-<div class="col-md-9">
+
     <div class="form-group">
       <form ng-submit="getForecast()" class="form-inline">
         <div class="form-group">
-          <label for="location">Location</label>
-          <input type="text" ng-model="city" class="form-control" id="location" required="true">
+          <input type="text" ng-model="city" class="form-control" id="location" required="true" placeholder="Location">
         </div>
         <button type="submit" class="btn btn-primary">Get Forecast</a>
       </form>
     </div>
     <div ui-view="weather"></div>
-</div>
