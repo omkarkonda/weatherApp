@@ -1,25 +1,123 @@
-/* app css stylesheet */
+html,body{
+  margin:0;
+  background-color: #333;
+  font-family: 'Titillium Web', sans-serif;
+}
+.container{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items:flex-start;
+  align-content: stretch;
+  margin:50px;
+  background-color: #4CAF50;
+  box-shadow: 0px 0px  80px #000;
+}
+.container > .nav {
+  width:15vw;
+  min-height: 80vh;
+  background-color: #4CAF50;
+}
+.container > .weather-content{
+  background-color: #fff;
+  width:85vw;
+  min-height: 80vh;
+  align-self: stretch;
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+}
+/* Left nav*/
+
+.list-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  min-height:50vh; 
+}
+.list-group a{
+  color:#fff;
+  font-size:1.2rem;
+  display: block;
+  padding: 5px 5px 5px 25px;
+  border-bottom: 1px solid #388E3C;
+  background: url(images/location.svg) no-repeat left center;
+  background-size: 15%;
 }
 
-.menu:before {
-  content: "[";
+/*search box*/
+.form-group{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.menu:after {
-  content: "]";
+.form-group, .form{
+    width:100%
+}
+.form-group .form-control{
+  border:none;
+  border-bottom: 1px solid #333;
+  padding:10px;
+  width:80%;
+  background-color: white;
+  font-size: 2rem;
+  transition: 0.3s ease all;
+  text-align: center;
 }
 
-.menu > li {
-  display: inline;
+input:-webkit-autofill{
+  background-color: transparent !important;
+}
+.form-control:focus{
+  margin-top: 20px;
+  outline:none;
+  width:80%;
+  margin:0 auto;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.wdata{
+  width:80%;
+  margin:0 auto;
+}
+
+.wdata .range{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.panel{
+  padding:10px 0;
+}
+
+.panel-heading{
+  font-weight: bold;
+  font-size: 0.8rem
+}
+.panel table{
+  width:100%;
+  border:1px solid #C8E6C9;
+}
+.panel table tr{
+  border-bottom: 1px solid #C8E6C9;
+}
+.panel table th{
+  background-color: #b7fb48;
+  color:#333;
+}
+.panel table th, .panel table td{
+  text-align: left;
+  border-right: 1px solid #C8E6C9;
+  padding: 10px;
+}
+
+.panel table table th, .panel table table td{
+    padding: 5px;
+}
+
+p.info{
+  margin: 2% 10%;
 }

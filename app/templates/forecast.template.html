@@ -1,15 +1,13 @@
-  <div>
-    <h1 class="text-left text-nowrap">{{params.cityName}} for  next {{days}} days</h1>
-    <form>
-      <div class="form-group">
-        <input type="range" value="1" min="1" max="10" ng-change="onChange()" ng-model="days"/>
-      </div>
-    </form>
+<div class="wdata">
+  <div class="range">
+      <h1 class="text-left text-nowrap">{{params.cityName}} for  next {{days}}  {{days > 1 ? 'days' : 'day'}}</h1>
+      <input type="range" value="1" min="1" max="10" ng-change="onChange()" ng-model="days"/>
   </div>
 
   <div>
     <div ui-view="mapview"></div>
-    <button class="btn btn-default" ng-click="showMap()">Show Map</button>
+    <button class="btn btn-default" ng-click="showMap()">City Details</button>
+
     <div class="panel panel-default" ng-repeat="day in data">
       <div class="panel-heading">
         {{convertDate(day.dt * 1000) | date: 'MMM dd EEEE' }}
@@ -25,8 +23,16 @@
           <tr>
             <td>{{day.weather[0].description}}</td>
             <td>
-                <strong>Day</strong>/ {{ convertToCelsius(day.temp.day)}}<br />
-                <strong>Night</strong>/ {{ convertToCelsius(day.temp.night)}}
+              <table>
+                <tr>
+                  <th>Day</th>
+                  <th>Night</th>
+                </tr>
+                <tr>
+                  <td>{{ convertToCelsius(day.temp.day)}}<sup>&deg</sup>C</td>
+                  <td>{{ convertToCelsius(day.temp.night)}}<sup>&deg</sup>C</td>
+                </tr>
+              </table>
               </td>
             <td>{{day.humidity}} %</td>
             <td>{{day.clouds}} %</td>
@@ -35,3 +41,4 @@
       </div>
     </div>
   </div>
+</div>

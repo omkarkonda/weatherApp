@@ -1,10 +1,14 @@
 
     <div class="form-group">
-      <form ng-submit="getForecast()" class="form-inline">
+      <form ng-submit="getForecast()" class="form">
         <div class="form-group">
-          <input type="text" ng-model="city" class="form-control" id="location" required="true" placeholder="Location">
+          <input type="text" ng-model="city" class="form-control" id="location" required="true" placeholder="Enter Location">
         </div>
-        <button type="submit" class="btn btn-primary">Get Forecast</a>
+        <!-- <button type="submit" class="btn btn-primary">Get Forecast</a> -->
       </form>
     </div>
+    <p ng-hide="city.length > 3" class="info">
+      Enter city to get weather forecast for 2 days, you can change the number of days by using the range slider.
+      Weather detail are fetched form openweathermap api.
+    </p>
     <div ui-view="weather"></div>

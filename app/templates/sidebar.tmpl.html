@@ -1,5 +1,5 @@
 <div class="list-group">
-  <a ng-repeat="city in filteredCityList" class="list-group-item" ui-serf-active="active" ui-sref="page.city({cityName:city})">
+  <a ng-repeat="city in filteredCityList | lowercase" class="list-group-item" ui-serf-active="active" ui-sref="page.city({cityName:city})">
     {{city}}
   </a>
 </div>
